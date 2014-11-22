@@ -1,16 +1,15 @@
 package com.ishmeetgrewal.elements;
 
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
-
+import android.widget.ImageButton;
 
 
 public class WelcomeActivity extends Activity {
@@ -21,9 +20,10 @@ public class WelcomeActivity extends Activity {
         setContentView(R.layout.activity_welcome);
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, new WelcomeFragment())
                     .commit();
         }
+
     }
 
 
@@ -31,6 +31,9 @@ public class WelcomeActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.welcome, menu);
+
+
+
         return true;
     }
 
@@ -49,16 +52,30 @@ public class WelcomeActivity extends Activity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class WelcomeFragment extends Fragment {
 
-        public PlaceholderFragment() {
+        public WelcomeFragment() {
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_welcome, container, false);
+
+            ImageButton newGameButton = (ImageButton) rootView.findViewById(R.id.new_game_button);
+            newGameButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getActivity(), GameActivity.class));
+                }
+            });
+
+
             return rootView;
         }
+
+
+
+
     }
 }
