@@ -16,55 +16,7 @@ public class GridAdapter extends BaseAdapter {
 
     // Keep all Images in array
     public Integer[] mThumbIds = {
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
-            R.drawable.icon_blank,
+            R.drawable.icon_blank
     };
 
     // Constructor
@@ -74,7 +26,7 @@ public class GridAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return mThumbIds.length;
+        return 49;
     }
 
     @Override
@@ -100,7 +52,7 @@ public class GridAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        imageView.setImageResource(mThumbIds[position]);
+        imageView.setImageResource(mThumbIds[0]);
         return imageView;
     }
 
