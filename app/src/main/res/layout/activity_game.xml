@@ -48,6 +48,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
+    <Button
+        android:id="@+id/button_fire_power"
+        android:text="Fire Power"
+        android:layout_below="@+id/next_item_text"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/button_water_power"
+        android:text="Water Power"
+        android:layout_below="@+id/next_item_text"
+        android:layout_toRightOf="@+id/button_fire_power"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/button_grass_power"
+        android:text="Gras Power"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/button_water_power"
+        android:layout_below="@+id/next_item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <GridView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/grid_view"
