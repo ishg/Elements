@@ -9,8 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +20,7 @@ public class GameActivity extends Activity {
 
     int nextItem;
     int nextColor;
-    int level = 1;
+    int level = 0;
     ImageView nextItemView;
     boolean newGame = true;
     int[] tileArray = new int[49];
@@ -56,19 +56,6 @@ public class GameActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ImageView imageView = (ImageView) view;
-                /*
-                if(newGame){
-                    newGame = false;
-                    tileArray[position]= nextItem;
-                    imageView.setImageResource(nextItem);
-                    imageView.setBackgroundColor(nextColor);
-                    checkNeighbors(position,nextItem);
-                    nextItemView = (ImageView) findViewById(R.id.next_item_view);
-                    nextItemView.setImageResource(getNextItem());
-                    nextItemView.setBackgroundColor(nextColor);
-                    updateScore(1);
-                }
-                else if(tileArray[position]==0 && checkAdjacent(position)){*/
                 if(tileArray[position]==0){
                     tileArray[position]= nextItem;
                     imageView.setImageResource(nextItem);
@@ -77,16 +64,15 @@ public class GameActivity extends Activity {
                     nextItemView = (ImageView) findViewById(R.id.next_item_view);
                     nextItemView.setImageResource(getNextItem());
                     nextItemView.setBackgroundColor(nextColor);
-                    updateScore(1);
                 }else{
                     Toast.makeText(getApplicationContext(), "Not possible!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        Button button_fire_power = (Button) findViewById(R.id.button_fire_power);
-        Button button_water_power = (Button) findViewById(R.id.button_water_power);
-        Button button_grass_power = (Button) findViewById(R.id.button_grass_power);
+        ImageButton button_fire_power = (ImageButton) findViewById(R.id.button_fire_power);
+        ImageButton button_water_power = (ImageButton) findViewById(R.id.button_water_power);
+        ImageButton button_grass_power = (ImageButton) findViewById(R.id.button_grass_power);
 
         button_fire_power.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -228,7 +214,7 @@ public class GameActivity extends Activity {
             iv = (ImageView) gridView.getChildAt(top);
             iv.setImageResource(blank);
             iv.setBackgroundColor(Color.rgb(238,238,238));
-            updateScore(3);
+            updateScore(1);
             result = true;
         }
         if(left>=0 && tileArray[left]==color){
@@ -236,7 +222,7 @@ public class GameActivity extends Activity {
             iv = (ImageView) gridView.getChildAt(left);
             iv.setImageResource(blank);
             iv.setBackgroundColor(Color.rgb(238,238,238));
-            updateScore(3);
+            updateScore(1);
             result = true;
         }
         if(right>=0 && tileArray[right]==color){
@@ -244,7 +230,7 @@ public class GameActivity extends Activity {
             iv = (ImageView) gridView.getChildAt(right);
             iv.setImageResource(blank);
             iv.setBackgroundColor(Color.rgb(238,238,238));
-            updateScore(3);
+            updateScore(1);
             result = true;
         }
         if(bottom>=0 && tileArray[bottom]==color){
@@ -252,7 +238,7 @@ public class GameActivity extends Activity {
             iv = (ImageView) gridView.getChildAt(bottom);
             iv.setImageResource(blank);
             iv.setBackgroundColor(Color.rgb(238,238,238));
-            updateScore(3);
+            updateScore(1);
             result = true;
         }
         if(topLeft>=0 && tileArray[topLeft]==color){
@@ -260,7 +246,7 @@ public class GameActivity extends Activity {
             iv = (ImageView) gridView.getChildAt(topLeft);
             iv.setImageResource(blank);
             iv.setBackgroundColor(Color.rgb(238,238,238));
-            updateScore(3);
+            updateScore(1);
             result = true;
         }
         if(topRight>=0 && tileArray[topRight]==color){
@@ -268,7 +254,7 @@ public class GameActivity extends Activity {
             iv = (ImageView) gridView.getChildAt(topRight);
             iv.setImageResource(blank);
             iv.setBackgroundColor(Color.rgb(238,238,238));
-            updateScore(3);
+            updateScore(1);
             result = true;
         }
         if(bottomLeft>=0 && tileArray[bottomLeft]==color){
@@ -276,7 +262,7 @@ public class GameActivity extends Activity {
             iv = (ImageView) gridView.getChildAt(bottomLeft);
             iv.setImageResource(blank);
             iv.setBackgroundColor(Color.rgb(238,238,238));
-            updateScore(3);
+            updateScore(1);
             result = true;
         }
         if(bottomRight>=0 && tileArray[bottomRight]==color){
@@ -284,7 +270,7 @@ public class GameActivity extends Activity {
             iv = (ImageView) gridView.getChildAt(bottomRight);
             iv.setImageResource(blank);
             iv.setBackgroundColor(Color.rgb(238,238,238));
-            updateScore(3);
+            updateScore(1);
             result = true;
         }
         return result;
@@ -295,6 +281,8 @@ public class GameActivity extends Activity {
         if(score/20 > level){
             level+=1;
         }
+        TextView levelView = (TextView)findViewById(R.id.level_count);
+        levelView.setText(Integer.toString(level+1));
         TextView scoreView = (TextView) findViewById(R.id.score_count);
         scoreView.setText(Integer.toString(score));
     }
@@ -309,7 +297,7 @@ public class GameActivity extends Activity {
                 iv = (ImageView) gridView.getChildAt(i);
                 iv.setImageResource(blank);
                 iv.setBackgroundColor(Color.rgb(238,238,238));
-                updateScore(3);
+                updateScore(1);
             }
             i++;
         }
@@ -320,7 +308,7 @@ public class GameActivity extends Activity {
         ImageView iv;
         boolean run;
         int random, pos, color, item;
-        for (int i=0; i<level; i++){
+        for (int i=0; i<=level; i++){
             run = true;
             while(run){
                 pos = (int) (Math.random()*49);

@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/next_item_view"
-        android:layout_toRightOf="@+id/next_item_text"/>
+        android:layout_toRightOf="@id/next_item_text"/>
 
     <TextView
         android:id="@+id/score_text"
@@ -48,29 +48,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
-    <Button
-        android:id="@+id/button_fire_power"
-        android:text="Fire Power"
-        android:layout_below="@+id/next_item_text"
-        android:layout_marginTop="20dp"
+    <TextView
+        android:id="@+id/level_text"
+        android:text="Level "
+        android:paddingLeft="30dp"
+        android:paddingRight="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_gravity="center_vertical"
+        android:layout_toRightOf="@id/next_item_view"
+        android:layout_below="@id/score_text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/button_water_power"
-        android:text="Water Power"
-        android:layout_below="@+id/next_item_text"
-        android:layout_toRightOf="@+id/button_fire_power"
-        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:id="@+id/level_count"
+        android:text="1"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_gravity="center_vertical"
+        android:layout_below="@id/score_count"
+        android:layout_toRightOf="@id/level_text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/button_grass_power"
-        android:text="Gras Power"
-        android:layout_marginTop="20dp"
-        android:layout_toRightOf="@+id/button_water_power"
-        android:layout_below="@+id/next_item_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        />
 
     <GridView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/grid_view"
@@ -78,8 +80,46 @@
         android:layout_height="wrap_content"
         android:numColumns="7"
         android:gravity="center"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true">
+        android:layout_alignParentBottom="true">
     </GridView>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_above="@id/grid_view"
+        android:gravity="center_horizontal"
+        android:layout_centerInParent="true">
+
+        <ImageButton
+            android:id="@+id/button_fire_power"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:src="@drawable/icon_fire_power"
+            android:background="#ff008fd5" />
+        <ImageButton
+            android:id="@+id/button_water_power"
+            android:layout_toRightOf="@id/button_fire_power"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:src="@drawable/icon_water_power"
+            android:background="#ff6b9a33" />
+        <ImageButton
+            android:id="@+id/button_grass_power"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/button_water_power"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:src="@drawable/icon_grass_power"
+            android:background="#ffebc137" />
+
+    </LinearLayout>
+
 
 </RelativeLayout>
